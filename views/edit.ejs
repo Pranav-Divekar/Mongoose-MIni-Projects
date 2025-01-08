@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Message</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <form method="post" action="/chats/<%=data._id%>?_method=PUT">
+        <h2>Editing Message for : <%= data._id %></h2>
+        <p>This chat was sent from <%= data.from %> to <%=data.to %> </p>
+        <textarea name="newmsg"><%=data.msg%></textarea>
+        <button>Change</button>
+    </form>
+    <form method="post" action="/chats/<%= data._id %>/delete?_method=DELETE">
+        <button style="background-color: red; color: white;">Delete Post</button>
+    </form>
+
+</body>
+</html>

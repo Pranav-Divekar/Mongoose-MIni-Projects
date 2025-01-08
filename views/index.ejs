@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chats Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>These are all chats</h1>
+    <% for(let i=0;i<data.length;i++){%>
+        <div class="chat">
+            <p class="from"><strong>From:</strong> <%= data[i].from %></p>
+            <p class="to"><strong>To:</strong> <%= data[i].to %></p>
+            <p class="msg"><%= data[i].msg %></p>
+            <p class="time">Time:<%= data[i].created_at.toString().split(" ")[4] %></p>
+            <p class="date">Date:<%= data[i].created_at.toString().split(" ")[2]%>th <%=  data[i].created_at.toString().split(" ")[1]%>&nbsp;<%=  data[i].created_at.toString().split(" ")[3]%></p>
+            <form method="GET" action="http://localhost:8080/chats/<%= data[i]._id %>/edit">
+                <button>Edit</button>
+            </form>
+            <hr>
+        </div>
+    <%}%>
+    <form method="get" action="http://localhost:8080/newchat">
+        <button>Create a new Chat</button>
+    </form>
+</body>
+</html>
